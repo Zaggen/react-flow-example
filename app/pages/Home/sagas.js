@@ -8,7 +8,7 @@ import { setUsersListSuccess, type $UserActionTypes } from './actions'
 const watchers = [
   function* fetchUsers(): Saga<*> {
     yield takeLatest(
-      ('SET_USERS_LIST': $UserActionTypes),
+      ('FETCH_USERS': $UserActionTypes),
       fetchUsersSaga
     )
   }
