@@ -1,0 +1,47 @@
+{
+  "env": {
+    "development": {
+      "presets": ["next/babel"],
+      "plugins": [
+        "transform-flow-strip-types",
+        ["transform-define", "./envConfig.js"],
+        "transform-react-jsx-source",
+        "transform-do-expressions",
+        ["module-resolver", {
+          "root": ["./app"],
+          "alias": {
+            "components": "components",
+            "hocs": "hocs",
+            "utils": "utils",
+            "settings": "settings",
+            "containers": "containers",
+            "pages": "pages",
+            "svgs": "svgs",
+            "common": "common"
+          }
+        }]
+      ]
+    },
+    "production": {
+      "presets": ["next/babel"],
+      "plugins": [
+        "transform-flow-strip-types",
+        ["transform-define", "./envConfig.js"],
+        "transform-react-jsx-source",
+        ["module-resolver", {
+          "root": ["./app"],
+          "alias": {
+            "components": "components",
+            "hocs": "hocs",
+            "utils": "utils",
+            "settings": "settings",
+            "containers": "containers",
+            "pages": "pages",
+            "svgs": "svgs",
+            "common": "common"
+          }
+        }]
+      ]
+    },
+  }
+}
