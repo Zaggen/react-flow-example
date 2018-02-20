@@ -1,11 +1,10 @@
-// @flow
-import type { $User } from './types'
-import type { $UserActions } from './actions'
+// import type { $User } from './types'
+// import type { $UserActions } from './actions'
 
 
-export type $State = $User[]
+// export type $State = $User[]
 
-function usersReducer(state: $State = [], action: $UserActions): $State {
+function usersReducer(state = [], action) {
   switch(action.type) {
     case 'FETCH_USERS_SUCCESS': {
       return action.payload.users
