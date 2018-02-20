@@ -1,30 +1,27 @@
-// @flow
-import type { $User } from './types'
 import createAction from 'utils/createAction'
 
 
 export const fetchUsers = () => ({
-  type: ('FETCH_USERS': 'FETCH_USERS'),
+  type: 'FETCH_USERS',
 })
 
-export const fetchUsersSuccess = (users: $User[]) => ({
-  type: ('FETCH_USERS_SUCCESS': 'FETCH_USERS_SUCCESS'),
+export const fetchUsersSuccess = (users) => ({
+  type: 'FETCH_USERS_SUCCESS',
   payload: { users }
 })
 
-export const addUser = (user: $User) => ({
-  type: ('ADD_USER': 'ADD_USER'),
+export const addUser = (user) => ({
+  type: 'ADD_USER',
   payload: { user }
 })
 
 // With create action helper
 export const removeUser = (user: $User) =>
-  createAction(('REMOVE_USER': 'REMOVE_USER'), { user })
+  createAction('REMOVE_USER', { user })
 
-
-// Types exports
-
-const actions = { fetchUsers, fetchUsersSuccess, addUser, removeUser }
+/*
+const actions = { setUsersList, setUsersListSuccess, addUser, removeUser }
 
 export type $UserActionTypes = $ExtractActionTypes<typeof actions>
 export type $UserActions = $ExtractActions<typeof actions>
+*/
