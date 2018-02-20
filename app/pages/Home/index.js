@@ -1,6 +1,6 @@
-// @flow
 import React from 'react'
-import { compose, pure, type HOC } from 'recompose'
+import PropTypes from 'prop-types'
+import { compose, pure } from 'recompose'
 import { connect } from 'react-redux'
 import page from 'hocs/page'
 import { Wrapper, Title } from './styled'
@@ -8,6 +8,8 @@ import Users from './Users'
 import { fetchUsers, addUser, removeUser } from './actions'
 import { selectUsers } from './selectors'
 
+
+// Example with connected functional component
 /*
 const HomePage = props => (
   <Wrapper>
@@ -22,7 +24,7 @@ const HomePage = props => (
 
 
 // Example with class based component (Connected)
-class HomePage<P: *> extends React.PureComponent<P> {
+class HomePage extends React.PureComponent {
   componentWillMount() { // lifecycle HOC does not work with recompose+flow but is ok on classes
     this.props.fetchUsers()
   }
@@ -41,10 +43,23 @@ class HomePage<P: *> extends React.PureComponent<P> {
   }
 }
 
+HomePage.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  fetchUsers: PropTypes.func.isRequired,
+  addUser: PropTypes.func.isRequired,
+  removeUser: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = (state) => ({ users: selectUsers(state) })
 const mapDispatchToProps = { fetchUsers, addUser, removeUser }
 
-const enhancer: HOC<*, {}> = compose(
+const enhancer = compose(
   page,
   connect(mapStateToProps, mapDispatchToProps),
   pure,
