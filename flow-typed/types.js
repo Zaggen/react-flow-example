@@ -8,7 +8,7 @@ declare type $ReduxActionsMap = {
   [key: string]: (*) => $ReduxAction,
 }
 
-declare type MapShape<S: Object> = {|
+declare type Map<S: Object> = {|
   get: (k: $Keys<S>) => any,
   getIn: (path: any[], dfltValue: any) => any,
   set: (k: $Keys<S>, v: $Values<S>) => MapShape<S>,
@@ -19,7 +19,7 @@ declare type MapShape<S: Object> = {|
   toJS: () => S
 |}
 
-declare type ListShape<S: any> = {|
+declare type List<S: any> = {|
   get: (i: number) => any,
   getIn: (path: any[], dfltValue: any) => any,
   set: (i: number, v: $Values<S>) => ListShape<S>,
